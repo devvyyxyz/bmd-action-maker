@@ -7,12 +7,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Light mode styles */
-body.light-mode {
-  background-color: #f4f4f4;
-  color: #333;
-}
-
 .container {
   display: flex;
   flex-direction: row;  /* Display sections horizontally */
@@ -22,7 +16,7 @@ body.light-mode {
   margin: auto;
 }
 
-.form-section, .ui-builder {
+.form-section, .ui-builder, .form-column {
   flex: 1;
   border: 1px solid #444;
   padding: 20px;
@@ -30,13 +24,9 @@ body.light-mode {
   background-color: #1e1e1e;
 }
 
-body.light-mode .form-section, body.light-mode .ui-builder {
-  background-color: #ffffff;
-  border-color: #ccc;
-}
-
 h1, h2 {
   margin-top: 0;
+  color: #ffffff;
 }
 
 label {
@@ -47,20 +37,14 @@ label {
   color: #e0e0e0;
 }
 
-body.light-mode label {
-  color: #333;
-}
-
 input, textarea, select, button {
   padding: 10px;
   font-size: 1rem;
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #666;
-}
-
-body.light-mode input, body.light-mode textarea, body.light-mode select {
-  border-color: #ccc;
+  background-color: #333;
+  color: #e0e0e0;
 }
 
 textarea[readonly] {
@@ -84,10 +68,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-body.light-mode button {
-  background-color: #0056b3;
-}
-
 pre {
   background: #333;
   padding: 10px;
@@ -96,12 +76,6 @@ pre {
   font-size: 0.9rem;
   overflow-x: auto;
   color: #e0e0e0;
-}
-
-body.light-mode pre {
-  background: #f9f9f9;
-  border-color: #ddd;
-  color: #333;
 }
 
 /* UI Preview */
@@ -114,11 +88,6 @@ body.light-mode pre {
   min-height: 100px;
 }
 
-body.light-mode .ui-preview {
-  background: #fff;
-  border-color: #ccc;
-}
-
 .ui-preview label {
   display: flex;
   flex-direction: column;
@@ -127,18 +96,10 @@ body.light-mode .ui-preview {
   color: #e0e0e0;
 }
 
-body.light-mode .ui-preview label {
-  color: #333;
-}
-
 .ui-preview input, .ui-preview textarea {
   padding: 5px;
   font-size: 0.9rem;
   border-radius: 5px;
-}
-
-body.light-mode .ui-preview input, body.light-mode .ui-preview textarea {
-  border-color: #ccc;
 }
 
 .ui-preview input[type="checkbox"] {
@@ -162,41 +123,62 @@ body.light-mode .ui-preview input, body.light-mode .ui-preview textarea {
   overflow-x: auto;  /* Allow horizontal scrolling if the content overflows */
 }
 
-body.light-mode .mod-preview {
-  background: #ffffff;
-  border-color: #ccc;
-  color: #333;
-}
-
-/* Adjusting flex properties for the form-column container */
-.form-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;  /* Allow the columns to grow and fill the available space */
-  min-width: 300px;  /* Ensure columns don't shrink too much */
-  max-width: 100%;  /* Ensure preview doesn't overflow outside of the container */
-}
-
-/* Button container */
 .buttons {
   display: flex;
   gap: 10px;
 }
 
-/* Light/Dark Mode Toggle */
-.toggle-theme {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #007BFF;
-  border: none;
+button[type="button"] {
+  background-color: #f0a500;
   color: white;
-  padding: 10px 15px;
-  border-radius: 50px;
-  cursor: pointer;
 }
 
-.toggle-theme:hover {
-  background-color: #0056b3;
+button[type="button"]:hover {
+  background-color: #c87b00;
+}
+
+/* Form Inputs and Textareas */
+input, textarea, select {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #666;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+input[type="url"]:focus, input[type="text"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* UI Form and Preview Section */
+#ui-builder-form {
+  margin-bottom: 20px;
+}
+
+#ui-preview-container {
+  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  border: 1px solid #555;
+  min-height: 100px;
+}
+
+#mod-preview-area {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+#mod-preview-area code {
+  font-size: 1rem;
+  color: #e0e0e0;
 }
