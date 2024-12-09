@@ -1,7 +1,10 @@
-/* This 100% needs better theming LMAO */
+/* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   padding: 20px;
+  background-color: #121212;
+  color: #e0e0e0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -13,15 +16,17 @@ body {
   margin: auto;
 }
 
-.form-section, .ui-builder {
+.form-section, .ui-builder, .form-column {
   flex: 1;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   padding: 20px;
   border-radius: 8px;
+  background-color: #1e1e1e;
 }
 
 h1, h2 {
   margin-top: 0;
+  color: #ffffff;
 }
 
 label {
@@ -29,17 +34,22 @@ label {
   flex-direction: column;
   font-size: 1rem;
   margin-bottom: 10px;
+  color: #e0e0e0;
 }
 
 input, textarea, select, button {
   padding: 10px;
   font-size: 1rem;
   margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #666;
+  background-color: #333;
+  color: #e0e0e0;
 }
 
 textarea[readonly] {
-  background: #f9f9f9;
-  color: #666;
+  background: #333;
+  color: #888;
   cursor: not-allowed;
 }
 
@@ -59,18 +69,19 @@ button:hover {
 }
 
 pre {
-  background: #f4f4f4;
+  background: #333;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #555;
   border-radius: 5px;
   font-size: 0.9rem;
   overflow-x: auto;
+  color: #e0e0e0;
 }
 
 /* UI Preview */
 .ui-preview {
-  border: 1px solid #ddd;
-  background: #f9f9f9;
+  border: 1px solid #555;
+  background: #1e1e1e;
   padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
@@ -82,11 +93,13 @@ pre {
   flex-direction: column;
   margin-bottom: 10px;
   font-size: 0.9rem;
+  color: #e0e0e0;
 }
 
 .ui-preview input, .ui-preview textarea {
   padding: 5px;
   font-size: 0.9rem;
+  border-radius: 5px;
 }
 
 .ui-preview input[type="checkbox"] {
@@ -95,8 +108,8 @@ pre {
 
 /* Mod Preview */
 .mod-preview {
-  border: 1px solid #ddd;
-  background: #f9f9f9;
+  border: 1px solid #444;
+  background: #1e1e1e;
   padding: 10px;
   border-radius: 5px;
   min-height: 150px;
@@ -110,18 +123,62 @@ pre {
   overflow-x: auto;  /* Allow horizontal scrolling if the content overflows */
 }
 
-/* Adjusting flex properties for the form-column container */
-.form-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;  /* Allow the columns to grow and fill the available space */
-  min-width: 300px;  /* Ensure columns don't shrink too much */
-  max-width: 100%;  /* Ensure preview doesn't overflow outside of the container */
-}
-
-/* Button container */
 .buttons {
   display: flex;
   gap: 10px;
+}
+
+button[type="button"] {
+  background-color: #f0a500;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background-color: #c87b00;
+}
+
+/* Form Inputs and Textareas */
+input, textarea, select {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #666;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+input[type="url"]:focus, input[type="text"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* UI Form and Preview Section */
+#ui-builder-form {
+  margin-bottom: 20px;
+}
+
+#ui-preview-container {
+  padding: 10px;
+  background-color: #333;
+  border-radius: 8px;
+  border: 1px solid #555;
+  min-height: 100px;
+}
+
+#mod-preview-area {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+#mod-preview-area code {
+  font-size: 1rem;
+  color: #e0e0e0;
 }
