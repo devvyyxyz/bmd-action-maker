@@ -1,0 +1,127 @@
+/* This 100% needs better theming LMAO */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;  /* Display sections horizontally */
+  gap: 20px;  /* Add space between columns */
+  max-width: 100%;
+  overflow-x: auto;  /* Allow horizontal scrolling if needed */
+  margin: auto;
+}
+
+.form-section, .ui-builder {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+input, textarea, select, button {
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+textarea[readonly] {
+  background: #f9f9f9;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Buttons styling */
+button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+/* UI Preview */
+.ui-preview {
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  min-height: 100px;
+}
+
+.ui-preview label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.ui-preview input, .ui-preview textarea {
+  padding: 5px;
+  font-size: 0.9rem;
+}
+
+.ui-preview input[type="checkbox"] {
+  width: auto;
+}
+
+/* Mod Preview */
+.mod-preview {
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 150px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  margin-top: 20px;
+  word-wrap: break-word;
+  height: auto;  /* Allow the preview area to grow as needed */
+  width: auto;  /* Allow width to adjust to content */
+  min-width: 100%;  /* Prevent it from being narrower than the container */
+  overflow-x: auto;  /* Allow horizontal scrolling if the content overflows */
+}
+
+/* Adjusting flex properties for the form-column container */
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;  /* Allow the columns to grow and fill the available space */
+  min-width: 300px;  /* Ensure columns don't shrink too much */
+  max-width: 100%;  /* Ensure preview doesn't overflow outside of the container */
+}
+
+/* Button container */
+.buttons {
+  display: flex;
+  gap: 10px;
+}
