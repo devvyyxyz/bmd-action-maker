@@ -12,9 +12,9 @@ function generateModContent(isPreview = false) {
     data: { name },
     category,
     info: {
-      source: source || undefined,
-      creator: author,
-      donation: donation || undefined,
+      source: source || "",
+      creator: author || "",
+      donation: donation || "",
     },
     UI: JSON.parse(ui),  // UI is still JSON parsed for correct format
     subtitle: `(values) => {return \`Path: ${'${values.path}'}\`}`,
