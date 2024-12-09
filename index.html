@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mod Generator with UI Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Main Form -->
+    <div class="form-section">
+      <h1>Mod Generator</h1>
+      <form id="mod-form">
+        <label>
+          Name:
+          <input type="text" id="mod-name" placeholder="e.g., Delete Folder" required>
+        </label>
+        <label>
+          Category:
+          <input type="text" id="mod-category" placeholder="e.g., Files" required>
+        </label>
+        <label>
+          Author:
+          <input type="text" id="mod-author" placeholder="e.g., nitiqt" required>
+        </label>
+        <label>
+          Code:
+          <textarea id="mod-code" rows="8" placeholder="Write your JavaScript function here..." required></textarea>
+        </label>
+        <label>
+          UI (Generated Automatically):
+          <textarea id="mod-ui" rows="6" placeholder="UI JSON will appear here" readonly></textarea>
+        </label>
+        <label>
+          Source Link (Optional):
+          <input type="url" id="mod-source" placeholder="e.g., https://github.com/user/repo">
+        </label>
+        <label>
+          Donation Link (Optional):
+          <input type="url" id="mod-donation" placeholder="e.g., https://paypal.me/username">
+        </label>
+        <button type="submit">Generate Mod</button>
+      </form>      
+    </div>
+
+    <!-- UI Builder -->
+    <div class="ui-builder">
+        <h2>UI Builder</h2>
+        <form id="ui-builder-form">
+          <label>
+            Element Type:
+            <select id="ui-element-type" required>
+              <option value="input">Input</option>
+              <option value="textarea">Textarea</option>
+              <option value="checkbox">Checkbox</option>
+            </select>
+          </label>
+          <label>
+            Element Name:
+            <input type="text" id="ui-element-name" placeholder="e.g., Path" required>
+          </label>
+          <label>
+            Store As:
+            <input type="text" id="ui-element-store-as" placeholder="e.g., path" required>
+          </label>
+          <button type="button" id="add-ui-element">Add Element</button>
+        </form>
+      
+        <h3>Preview</h3>
+        <div id="ui-preview-container" class="ui-preview">
+          <!-- Dynamically generated UI will be shown here -->
+        </div>
+    </div>      
+  <script src="script.js"></script>
+</body>
+</html>
