@@ -1,42 +1,4 @@
-// UI Elements Array
 let uiElements = [];
-
-// Form submission handler
-document.getElementById("mod-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const name = document.getElementById("mod-name").value;
-  const category = document.getElementById("mod-category").value;
-  const author = document.getElementById("mod-author").value;
-  const code = document.getElementById("mod-code").value;
-  const ui = JSON.stringify(uiElements, null, 2); // Generated UI JSON
-  const source = document.getElementById("mod-source").value;
-  const donation = document.getElementById("mod-donation").value;
-
-  const mod = {
-    data: {
-      name,
-    },
-    category,
-    info: {
-      source: source || undefined,
-      creator: author,
-      donation: donation || undefined,
-    },
-    UI: JSON.parse(ui),
-    subtitle: `(data) => \`Path: ${'${data.path}'}\``,
-    compatibility: ["Any"],
-    run: code,
-  };
-
-  // Generate JavaScript file content
-  const fileContent = `module.exports = ${JSON.stringify(mod, null, 2)};`;
-  const blob = new Blob([fileContent], { type: "application/javascript" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `${name.replace(/\s+/g, "_")}_mod.js`;
-  link.click();
-});
 
 // Add UI Element handler
 document.getElementById("add-ui-element").addEventListener("click", () => {
@@ -59,7 +21,7 @@ document.getElementById("add-ui-element").addEventListener("click", () => {
   updateUIPreview();
 });
 
-// Update UI preview
+// Update UI preview dynamically
 function updateUIPreview() {
   const uiPreviewContainer = document.getElementById("ui-preview-container");
   uiPreviewContainer.innerHTML = ""; // Clear existing preview
@@ -86,6 +48,6 @@ function updateUIPreview() {
     uiPreviewContainer.appendChild(label);
   });
 
-  // Also update the JSON field in the form
+  // Update the JSON UI field in the main form
   document.getElementById("mod-ui").value = JSON.stringify(uiElements, null, 2);
 }

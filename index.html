@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mod Generator with UI Builder</title>
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Prism.js CSS for syntax highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Prism.js JS for language support -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -41,6 +48,7 @@
           <input type="url" id="mod-donation" placeholder="e.g., https://paypal.me/username">
         </label>
         <button type="submit">Generate Mod</button>
+        <button type="button" id="preview-mod">Preview Mod</button>
       </form>      
     </div>
 
@@ -71,7 +79,18 @@
         <div id="ui-preview-container" class="ui-preview">
           <!-- Dynamically generated UI will be shown here -->
         </div>
-    </div>      
-  <script src="script.js"></script>
-</body>
+    </div> 
+    
+    <!-- Mod Preview -->
+    <div class="form-column" id="mod-preview">
+      <h3>Mod Preview</h3>
+      <pre id="mod-preview-area" class="mod-preview">
+        <code class="language-json"></code>
+      </pre>
+    </div>
+
+
+    <script src="main.js"></script>
+    <script src="uiBuilder.js"></script>
+</body>    
 </html>
