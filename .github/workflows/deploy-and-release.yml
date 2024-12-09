@@ -39,15 +39,19 @@ jobs:
       - name: Get commit messages since last release
         id: get_commits
         run: |
-          # Get the previous tag (last release)
-          last_tag=$(git describe --tags --abbrev=0)
+          # Get the previous tag (last release), or use "v0" if no tag exists
+          last_tag=$(git describe --tags --abbrev=0 || echo "v0")
           echo "Last release tag: $last_tag"
 
           # List all commits between the last tag and HEAD, excluding merges and formatted nicely
           commits=$(git log $last_tag..HEAD --oneline --no-merges)
+
+          # Sanitize commit messages by escaping special characters
+          sanitized_commits=$(echo "$commits" | sed 's/[&/\$`]/\\&/g')
+
           echo "Commits since last release:"
-          echo "$commits"
-          echo "commits=$commits" >> $GITHUB_ENV
+          echo "$sanitized_commits"
+          echo "commits=$sanitized_commits" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
