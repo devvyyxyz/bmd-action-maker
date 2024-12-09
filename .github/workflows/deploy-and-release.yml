@@ -1,0 +1,67 @@
+name: Deploy and Create Releases
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main or any other branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (if needed, based on your project)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  # Adjust this to your Node.js version
+
+      - name: Install dependencies
+        run: npm install  # Run npm install if you're using Node.js or similar
+
+      - name: Build project (if necessary)
+        run: npm run build  # Run build command if needed
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch to deploy to
+          folder: build  # The folder with your built project (e.g., dist)
+          token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+
+  release:
+    runs-on: ubuntu-latest
+    needs: deploy  # Ensure release only happens after deploy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get the current commit count
+        id: commit_count
+        run: |
+          git fetch --prune --unshallow
+          total_commits=$(git rev-list --count HEAD)
+          echo "Total commits: $total_commits"
+          echo "total_commits=$total_commits" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        run: |
+          version="v${{ env.total_commits }}"
+          
+          # If the commit count is divisible by 10, create a major release
+          if [ $(( $total_commits % 10 )) -eq 0 ]; then
+            version="v$(($total_commits / 10))0.0"
+          fi
+
+          echo "Creating release with version $version"
+          
+          # Create release using GitHub CLI or API
+          gh release create $version --title "Release $version" --notes "Automated release for commit $total_commits"
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
