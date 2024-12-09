@@ -17,7 +17,7 @@ function generateModContent(isPreview = false) {
       donation: donation || undefined,
     },
     UI: JSON.parse(ui),  // UI is still JSON parsed for correct format
-    subtitle: `(data) => \`Path: ${'${data.path}'}\``,
+    subtitle: `(values) => {return \`Path: ${'${values.path}'}\`}`,
     compatibility: ["Any"],
     run: code,
   };
