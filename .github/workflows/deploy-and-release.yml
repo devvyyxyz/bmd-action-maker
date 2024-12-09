@@ -36,23 +36,6 @@ jobs:
           echo "Total commits: $total_commits"
           echo "total_commits=$total_commits" >> $GITHUB_ENV
 
-      - name: Get commit messages since last release
-        id: get_commits
-        run: |
-          # Get the previous tag (last release), or use "v0" if no tag exists
-          last_tag=$(git describe --tags --abbrev=0 || echo "v0")
-          echo "Last release tag: $last_tag"
-
-          # List all commits between the last tag and HEAD, excluding merges and formatted nicely
-          commits=$(git log $last_tag..HEAD --oneline --no-merges)
-
-          # Sanitize commit messages by escaping special characters
-          sanitized_commits=$(echo "$commits" | sed 's/[&/\$`]/\\&/g')
-
-          echo "Commits since last release:"
-          echo "$sanitized_commits"
-          echo "commits=$sanitized_commits" >> $GITHUB_ENV
-
       - name: Create Release
         id: create_release
         run: |
@@ -66,7 +49,7 @@ jobs:
           echo "Creating release with version $version"
           
           # Create release using GitHub CLI or API
-          gh release create $version --title "Release $version" --notes "Automated release for commit $total_commits. \n\nCommits:\n${{ env.commits }}"
+          gh release create $version --title "Release $version" --notes "Automated release for commit $total_commits"
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
