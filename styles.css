@@ -2,7 +2,7 @@
 body {
   font-family: 'Arial', sans-serif;
   padding: 20px;
-  background-color: #121212;
+  background-color: #000000;
   color: #e0e0e0;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -18,10 +18,10 @@ body {
 
 .form-section, .ui-builder, .form-column {
   flex: 1;
-  border: 1px solid #444;
+  border: 1px solid #242424;
   padding: 20px;
   border-radius: 8px;
-  background-color: #1e1e1e;
+  background-color: #121212;
 }
 
 h1, h2 {
@@ -43,7 +43,7 @@ input, textarea, select, button {
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #666;
-  background-color: #333;
+  background-color: #222;
   color: #e0e0e0;
 }
 
@@ -58,14 +58,14 @@ button {
   padding: 10px 15px;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #007BFF;
+  background-color: #25860d;
   color: white;
   border: none;
   border-radius: 5px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #41a719;
 }
 
 pre {
