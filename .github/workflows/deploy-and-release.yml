@@ -13,22 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js (if needed, based on your project)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'  # Adjust this to your Node.js version
-
-      - name: Install dependencies
-        run: npm install  # Run npm install if you're using Node.js or similar
-
-      - name: Build project (if necessary)
-        run: npm run build  # Run build command if needed
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # The branch to deploy to
-          folder: build  # The folder with your built project (e.g., dist)
+          branch: gh-pages  # The branch to deploy to (GitHub Pages)
+          folder: .  # Deploy from the root directory (where your HTML files are)
           token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
 
   release:
@@ -64,4 +53,3 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
