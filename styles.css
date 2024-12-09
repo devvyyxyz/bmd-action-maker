@@ -1,7 +1,16 @@
-/* This 100% needs better theming LMAO */
+/* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   padding: 20px;
+  background-color: #121212;
+  color: #e0e0e0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light mode styles */
+body.light-mode {
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .container {
@@ -15,9 +24,15 @@ body {
 
 .form-section, .ui-builder {
   flex: 1;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   padding: 20px;
   border-radius: 8px;
+  background-color: #1e1e1e;
+}
+
+body.light-mode .form-section, body.light-mode .ui-builder {
+  background-color: #ffffff;
+  border-color: #ccc;
 }
 
 h1, h2 {
@@ -29,17 +44,28 @@ label {
   flex-direction: column;
   font-size: 1rem;
   margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+body.light-mode label {
+  color: #333;
 }
 
 input, textarea, select, button {
   padding: 10px;
   font-size: 1rem;
   margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #666;
+}
+
+body.light-mode input, body.light-mode textarea, body.light-mode select {
+  border-color: #ccc;
 }
 
 textarea[readonly] {
-  background: #f9f9f9;
-  color: #666;
+  background: #333;
+  color: #888;
   cursor: not-allowed;
 }
 
@@ -58,23 +84,39 @@ button:hover {
   background-color: #0056b3;
 }
 
+body.light-mode button {
+  background-color: #0056b3;
+}
+
 pre {
-  background: #f4f4f4;
+  background: #333;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #555;
   border-radius: 5px;
   font-size: 0.9rem;
   overflow-x: auto;
+  color: #e0e0e0;
+}
+
+body.light-mode pre {
+  background: #f9f9f9;
+  border-color: #ddd;
+  color: #333;
 }
 
 /* UI Preview */
 .ui-preview {
-  border: 1px solid #ddd;
-  background: #f9f9f9;
+  border: 1px solid #555;
+  background: #1e1e1e;
   padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
   min-height: 100px;
+}
+
+body.light-mode .ui-preview {
+  background: #fff;
+  border-color: #ccc;
 }
 
 .ui-preview label {
@@ -82,11 +124,21 @@ pre {
   flex-direction: column;
   margin-bottom: 10px;
   font-size: 0.9rem;
+  color: #e0e0e0;
+}
+
+body.light-mode .ui-preview label {
+  color: #333;
 }
 
 .ui-preview input, .ui-preview textarea {
   padding: 5px;
   font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+body.light-mode .ui-preview input, body.light-mode .ui-preview textarea {
+  border-color: #ccc;
 }
 
 .ui-preview input[type="checkbox"] {
@@ -95,8 +147,8 @@ pre {
 
 /* Mod Preview */
 .mod-preview {
-  border: 1px solid #ddd;
-  background: #f9f9f9;
+  border: 1px solid #444;
+  background: #1e1e1e;
   padding: 10px;
   border-radius: 5px;
   min-height: 150px;
@@ -108,6 +160,12 @@ pre {
   width: auto;  /* Allow width to adjust to content */
   min-width: 100%;  /* Prevent it from being narrower than the container */
   overflow-x: auto;  /* Allow horizontal scrolling if the content overflows */
+}
+
+body.light-mode .mod-preview {
+  background: #ffffff;
+  border-color: #ccc;
+  color: #333;
 }
 
 /* Adjusting flex properties for the form-column container */
@@ -124,4 +182,21 @@ pre {
 .buttons {
   display: flex;
   gap: 10px;
+}
+
+/* Light/Dark Mode Toggle */
+.toggle-theme {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #007BFF;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.toggle-theme:hover {
+  background-color: #0056b3;
 }
